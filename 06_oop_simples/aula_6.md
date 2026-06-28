@@ -175,6 +175,11 @@ class ContaBancaria:
 > `_` é uma **convenção** (avisa: "não acesse diretamente"). `__` causa *name mangling* (Python renomeia o atributo internamente).
 
 ## Métodos estáticos e de classe
+O @classmethod é um método que pertence a classe em sí, e não a um objeto criado a partir dela.
+ele recebe cls como padrão, por conta disso, não importa o nome da classe, mas sim o que tem nela.
+
+Já o @statiscmethod é um método estastico, ou seja, ele não depende do comportamento da classe. Caso 
+queira usar eles, eu preciso passar o nome da classe para acessar seus atributos.
 
 ```python
 class ConstantesFisicas:

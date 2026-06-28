@@ -21,7 +21,7 @@ Repositório de estudos da monitoria de Python, com foco em aplicações de **F�
    Se for windows
    ```bash
    python ./exercicio_1.py
-   ``
+   ```
 
 ## Módulos
 

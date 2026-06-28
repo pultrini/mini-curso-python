@@ -9,6 +9,11 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use while
+i = 0
+while i < 10:
+    i += 1
+    print(11 - i)
+print("Fogo!")
 
 
 # ============================================================
@@ -18,7 +23,10 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use for e acumulador
-
+soma = 0
+for i in range(1, 101):
+    soma += i
+print("A soma de 1 a 100 é:", soma)
 
 # ============================================================
 # Exercício 3.3: Tabuada
@@ -27,6 +35,9 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use input() e for
+numero = int(input("Digite um número: "))
+for i in range(1, 11):
+    print(f"{numero} x {i} = {numero * i}")
 
 
 # ============================================================
@@ -37,6 +48,15 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 
 # TODO: use for e break
 
+intervalo_inferior = input("Digite o limite inferior do intervalo: ")
+intervalo_superior = input("Digite o limite superior do intervalo: ")
+
+for i in range(int(intervalo_inferior), int(intervalo_superior) + 1):
+    if i % 7 == 0:
+        print(f"O primeiro múltiplo de 7 entre {intervalo_inferior} e {intervalo_superior} é: {i}")
+        break
+
+
 
 # ============================================================
 # Exercício 3.5: Pular múltiplos de 3
@@ -45,6 +65,10 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use for e continue
+for i in range(1, 21):
+    if i % 3 == 0:
+        continue
+    print(i)
 
 
 # ============================================================
@@ -56,6 +80,12 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 
 # TODO: peça o número com input() e calcule o fatorial
 
+numero_fatorial = int(input("Digite um número para calcular o fatorial: "))
+fatorial = 1
+for i in range(1, numero_fatorial + 1):
+    fatorial *= i
+print(f"O fatorial de {numero_fatorial} é: {fatorial}")
+
 
 # ============================================================
 # Exercício 3.7: Sequência de Fibonacci
@@ -65,6 +95,11 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use input() e um loop para gerar a sequência
+n = int(input("Digite o número de termos da sequência de Fibonacci: "))
+a, b = 0, 1
+for _ in range(n):
+    print(a, end=" ")
+    a, b = b, a + b
 
 
 # ============================================================
@@ -74,3 +109,11 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use while, acumulador e contador
+
+while True:
+    nota = float(input("Digite uma nota (ou -1 para sair): "))
+    if nota == -1:
+        break
+    soma_notas += nota
+    contador_notas += 1
+print("A média das notas digitadas é:", soma_notas / contador_notas)

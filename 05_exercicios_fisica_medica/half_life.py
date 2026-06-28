@@ -31,7 +31,10 @@ def meia_vida_para_lambda(meia_vida):
         float: constante de decaimento (h⁻¹)
     """
     # TODO: implemente λ = ln(2) / t½
-    pass
+
+    lambda_dec = math.log(2) / meia_vida
+    return lambda_dec
+
 
 
 def lambda_para_meia_vida(lambda_dec):
@@ -44,7 +47,9 @@ def lambda_para_meia_vida(lambda_dec):
         float: meia-vida em horas
     """
     # TODO: implemente t½ = ln(2) / λ
-    pass
+
+    meia_vida = math.log(2) / lambda_dec
+
 
 
 def atividade_restante(A0, lambda_dec, t):
@@ -59,7 +64,8 @@ def atividade_restante(A0, lambda_dec, t):
         float: atividade no tempo t (Bq)
     """
     # TODO: implemente a fórmula
-    pass
+    A = A0 * math.exp(lambda_dec*t)
+    return A
 
 
 def tempo_para_atividade(A0, A_final, lambda_dec):
@@ -77,7 +83,9 @@ def tempo_para_atividade(A0, A_final, lambda_dec):
         float: tempo necessário (h)
     """
     # TODO: implemente t = ln(A₀/A) / λ
-    pass
+
+    t = math.log(A0/A_final) / lambda_dec
+    return t
 
 
 def listar_isotopos():

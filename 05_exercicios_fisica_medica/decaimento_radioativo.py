@@ -21,7 +21,9 @@ def calcular_atividade(N0, lambda_dec, t):
         float: número de átomos no tempo t
     """
     # TODO: implemente a fórmula do decaimento exponencial
-    pass
+    N = math.exp(-lambda_dec * t) * N0
+    return N
+
 
 
 def calcular_meia_vida(lambda_dec):
@@ -34,6 +36,7 @@ def calcular_meia_vida(lambda_dec):
         float: meia-vida (s)
     """
     # TODO: implemente t½ = ln(2) / λ
+    t_1_2 = math.log(2) / lambda_dec
     pass
 
 
@@ -48,7 +51,10 @@ def simular_decaimento(N0, lambda_dec, tempo_total, passo):
     """
     # TODO: use um loop para imprimir N(t) a cada 'passo' segundos
     # Dica: use range() com float convertendo para int, ou um while
-    pass
+    for t in range(0, tempo_total, passo):
+        N = calcular_atividade(N0, lambda_dec, t)
+        print(f"No tempo {t} temos a atividade {N}")
+        N0 = N
 
 
 # ============================================================

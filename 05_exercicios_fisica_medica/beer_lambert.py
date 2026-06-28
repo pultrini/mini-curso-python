@@ -21,7 +21,8 @@ def calcular_intensidade_transmitida(I0, mu, x):
         float: intensidade transmitida
     """
     # TODO: implemente a fórmula de Beer-Lambert
-    pass
+    I = I0 * math.exp(mu*x)
+    return I
 
 
 def calcular_transmitancia(I0, I):
@@ -35,7 +36,10 @@ def calcular_transmitancia(I0, I):
         float: transmitância (0 a 1)
     """
     # TODO: implemente T = I / I₀
-    pass
+    if I0 == 0:
+        print("O valor de I0 deve ser diferente de zero.")
+    T = I / I0
+    return T
 
 
 def calcular_absorbancia(T):
@@ -48,8 +52,8 @@ def calcular_absorbancia(T):
         float: absorbância
     """
     # TODO: implemente A = -log₁₀(T)
-    # Cuidado: T não pode ser 0 (log de 0 é indefinido)
-    pass
+    A = - math.log10(T)
+    return A
 
 
 def tabela_atenuacao(I0, mu, espessuras):
@@ -62,6 +66,17 @@ def tabela_atenuacao(I0, mu, espessuras):
     """
     # TODO: para cada espessura, calcule I, T e A e imprima uma linha da tabela
     # Formato sugerido: "x=0.50 cm | I=82.15 | T=0.8215 | A=0.085"
+    I = calcular_intensidade_transmitida(I0, mu, espessuras)
+    transmitancia = calcular_transmitancia(I0, I)
+    absorbancia = calcular_absorbancia(transmitancia)
+    print("================================")
+    print("=======Tabela de Atenuação======")
+    for espessura in espessuras:
+        I = calcular_intensidade_transmitida(I0, mu, espessura)
+        transmitancia = calcular_transmitancia(I0, I)
+        absorbancia = calcular_absorbancia(transmitancia)
+        print(f"x={espessura} | I={I} | T={transmitancia}| A={absorbancia}")
+        print("================================")
     pass
 
 

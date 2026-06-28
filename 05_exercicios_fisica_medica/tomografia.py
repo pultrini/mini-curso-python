@@ -19,7 +19,11 @@ def criar_grade(tamanho):
         list: grade 2D de zeros
     """
     # TODO: retorne uma lista de listas preenchida com 0.0
-    pass
+
+    for i in range(0, tamanho):
+        for j in range(0, tamanho):
+            grade[i][j] = 0.0
+    return grade
 
 
 def projetar_pixel(x, y, angulo_graus):
@@ -36,7 +40,9 @@ def projetar_pixel(x, y, angulo_graus):
         float: posição t na projeção
     """
     # TODO: converta o ângulo para radianos e aplique a fórmula
-    pass
+    angulo_radianos = angulo_graus * math.pi/180
+    t = x*math.cos(angulo_radianos) + y*math.sin(angulo_radianos)
+    return t
 
 
 def retroprojetar(grade, projecao, angulo_graus, centro):
@@ -60,7 +66,12 @@ def retroprojetar(grade, projecao, angulo_graus, centro):
             # Dica: use projetar_pixel(), ajustando para coordenadas centradas
             # x_rel = x - centro, y_rel = y - centro
             # Arredonde t para inteiro e some projecao[t] na grade se 0 <= t < len(projecao)
-            pass
+            t_relativo = projetar_pixel(x - centro, y - centro, angulo_graus)
+            t_indice = int(round(t_relativo)) + centro
+            if 0 <= t_indice < len(projecao):
+                grade[y][x] += projecao[t_indice]
+    return grade
+
 
 
 def imprimir_grade(grade):
@@ -72,7 +83,18 @@ def imprimir_grade(grade):
     # TODO: encontre o valor máximo da grade
     # Para cada linha, normalize os valores para 0-9 e imprima
     # Dica: use round(valor / maximo * 9) para normalizar
-    pass
+    maximo = max(max(linha) for linha in grade)
+    for linha in grade:
+        linha_normalizada = []
+        for valor in linha:
+            if maximo > 0:
+                valor_norm = int(round((valor / maximo) * 9))
+            else:
+                valor_norm = 0
+                
+            linha_normalizada.append(str(valor_norm))
+            
+        print(" ".join(linha_normalizada))
 
 
 # ============================================================

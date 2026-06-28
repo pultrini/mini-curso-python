@@ -32,7 +32,8 @@ def calcular_dose_absorvida(energia, massa):
         float: dose absorvida em Gray
     """
     # TODO: implemente D = energia / massa
-    pass
+    D = energia/massa
+    return D
 
 
 def calcular_equivalente_dose(dose_Gy, tipo_radiacao):
@@ -50,7 +51,9 @@ def calcular_equivalente_dose(dose_Gy, tipo_radiacao):
     """
     # TODO: use o dicionário W_R para obter o fator wR
     # Se o tipo não existir, levante ValueError
-    pass
+
+    H = dose_Gy * W_R[tipo_radiacao]
+    return H
 
 
 def verificar_limite(dose_mSv, tipo="publico"):
@@ -64,7 +67,10 @@ def verificar_limite(dose_mSv, tipo="publico"):
         str: "DENTRO DO LIMITE" ou "ACIMA DO LIMITE"
     """
     # TODO: compare dose_mSv com LIMITE_PUBLICO ou LIMITE_TRABALHADOR
-    pass
+    dose_trabalhador = "DENTRO DO LIMITE" if dose_mSv < LIMITE_TRABALHADOR else "ACIMA DO LIMITE"
+    dose_publico = "DENTRO DO LIMITE" if dose_mSv < LIMITE_PUBLICO else "ACIMA DO LIMITE"
+
+    print(f"dado a dose {dose_mSv} para um trabalhador ele esta {dose_trabalhador} e para o público está {dose_publico}")
 
 
 def converter_sievert(valor, de, para):
@@ -86,8 +92,21 @@ def converter_sievert(valor, de, para):
     """
     # TODO: crie um dicionário de fatores de conversão para Sv
     # Converta: valor → Sv → unidade destino
-    pass
 
+    fatores = {
+        "Sv": 1,
+        "mSv": 0.001,
+        "μSv": 0.000001,
+        "rem": 0.01
+    }
+    if de not in fatores or para not in fatores:
+        print("Não há nada dentro dos fatores configurados")
+        return
+    valor_em_sv = valor * fatores[de]
+    valor_convertido = valor_em_sv /fatores[para]
+
+    print(f"o valor foi convertido para {valor_convertido}. Ele era {valor_em_sv}")
+    
 
 # ============================================================
 # Teste seu código abaixo

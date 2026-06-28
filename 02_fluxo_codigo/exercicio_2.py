@@ -9,6 +9,12 @@ Complete os exercícios abaixo seguindo as instruções nos comentários.
 # ============================================================
 
 # TODO: use input() e o operador %
+valor = int(input("Digite um número: "))
+if valor % 2 == 0:
+    print(f"{valor} é par.")
+else:
+    print(f"{valor} é ímpar.")
+
 
 
 # ============================================================
@@ -24,6 +30,16 @@ nota = 7.5
 
 # TODO: use if/elif/else para classificar e imprimir
 
+if nota >= 9:
+    print("Classificação: A")
+elif nota >= 7:
+    print("Classificação: B")
+elif nota >= 5:
+    print("Classificação: C")
+else:
+    print("Classificação: D")
+
+
 
 # ============================================================
 # Exercício 2.3: Verificação de idade
@@ -36,6 +52,16 @@ nota = 7.5
 
 # TODO: use input() e if/elif/else
 
+idade = int(input("Digite sua idade: "))
+if idade < 12:
+    print("Criança")
+elif idade < 18:
+    print("Adolescente")
+elif idade < 65:
+    print("Adulto")
+else:
+    print("Idoso")
+
 
 # ============================================================
 # Exercício 2.4: Operadores lógicos
@@ -47,6 +73,12 @@ a = True
 b = False
 
 # TODO: imprima a, b, a and b, a or b, not a, not b
+print("a:", a)
+print("b:", b)
+print("a and b:", a and b)
+print("a or b:", a or b)
+print("not a:", not a)
+print("not b:", not b)
 
 
 # ============================================================
@@ -58,6 +90,10 @@ b = False
 numero = 15
 
 # TODO: verifique e imprima se está na faixa
+if 10 <= numero <= 20:
+    print(f"{numero} está entre 10 e 20.")
+else:
+    print(f"{numero} não está entre 10 e 20.")
 
 
 # ============================================================
@@ -68,6 +104,29 @@ numero = 15
 # ============================================================
 
 # TODO: use input() e if/elif/else
+
+numero1 = float(input("Digite o primeiro número: "))
+numero2 = float(input("Digite o segundo número: "))
+operacao = input("Digite a operação (+, -, *, /): ")
+
+if operacao == "+":
+    resultado = numero1 + numero2
+    print(f"Resultado: {resultado}")
+elif operacao == "-":
+    resultado = numero1 - numero2
+    print(f"Resultado: {resultado}")
+elif operacao == "*":
+    resultado = numero1 * numero2
+    print(f"Resultado: {resultado}")
+elif operacao == "/":
+    if numero2 == 0:
+        print("Erro: Divisão por zero.")
+    else:
+        resultado = numero1 / numero2
+        print(f"Resultado: {resultado}")
+else:
+    print("Erro: Operação inválida.")
+
 
 
 # ============================================================
@@ -81,3 +140,10 @@ numero = 15
 ano = 2024
 
 # TODO: verifique se o ano é bissexto e imprima
+
+bissexto = (ano % 4 == 0 and ano % 100 != 0) or (ano % 400 == 0)
+if bissexto:
+    print(f"{ano} é um ano bissexto.")
+else:
+    print(f"{ano} não é um ano bissexto.")
+
